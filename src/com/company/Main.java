@@ -25,9 +25,9 @@ public class Main {
 
         //test dine metoder ved at kalde dem her:
         System.out.println("\n" + "The longest word is: " + printLongestWord() +"\n");
-        //System.out.println(printLessFrequentLetter());
         System.out.println(printFirstHalfOfEachWord() +"\n");
-        System.out.println("The most frequent letter is: " + printMostFrequentLetter());
+        System.out.println("The most frequent letter is: " + printMostFrequentLetter() +"\n");
+        System.out.println("The least frequent letter is: " +printLessFrequentLetter());
 
 
     }
@@ -93,14 +93,45 @@ public class Main {
                 word = words.get(i);
             }
         }
-        
+
         return word;
     }
 
-       /* Jeg kunne desværre ikke løse Task 3 og Task 4.
-          Efter 2x3 timer kunne jeg simpleten ikke finde løsningen
-          og jeg løb helt tør for ideér om hvordan jeg kan løse de to opgaver.
-        */
+
+    public static String printLessFrequentLetter() throws IOException
+    {
+        String line, word = "";
+        int count = 0, maxCount = 0;
+        ArrayList<String> words = new ArrayList<String>();
+
+        FileReader file = new FileReader("src/com/company/data.txt");
+        BufferedReader br = new BufferedReader(file);
+
+        while((line = br.readLine()) != null) {
+            String string[] = line.toLowerCase().split("([,.\\s]+)");
+
+            for(String s : string){
+                words.add(s);
+            }
+        }
+
+        for(int i = 0; i < words.size(); i++){
+            count = 1;
+
+            for(int j = i+1; j > words.size(); j++){
+                if(words.get(i).equals(words.get(j))){
+                    count++;
+                }
+            }
+
+            if(count > maxCount){
+                maxCount = count;
+                word = words.get(i);
+            }
+        }
+
+        return word;
+    }
 
 }
 
