@@ -15,12 +15,12 @@ public class Main {
 
         String inputFromFile = "";
 
-        while (scan.hasNextLine())                                // checks if theres more lines in the file
+        while (scan.hasNextLine())
         {
-            inputFromFile += scan.nextLine();                     // adds each line to the inputFromFile string.
+            inputFromFile += scan.nextLine();
         }
         //mellemrum eller ikke logisk punktum
-        text = inputFromFile.split(" |\\. ");                    // Creates and array of strings, where each element is a single word from the file.
+        text = inputFromFile.split(" |\\. ");
 
 
         //test dine metoder ved at kalde dem her:
@@ -98,7 +98,8 @@ public class Main {
     /*
     Jeg har prøvet og prøvet at løse task 3 og task 4 som er mostFrequentLetter
     og leastFrequentLetter men jeg kunne simpelten ikke finde ud af det.
-    Jeg fik lavet lidt om sådan at task 3 hedder nu mostRepeatedWord, så jeg aflever lidt mere en kun task 1 og task 2. :
+    Jeg fik lavet lidt om sådan at task 3 hedder nu
+    mostRepeatedWord, så at jeg aflever i det mindste lidt mere en kun task 1 og task 2. :)
      */
 
 
