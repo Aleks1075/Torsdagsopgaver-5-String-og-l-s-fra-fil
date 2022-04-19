@@ -24,12 +24,9 @@ public class Main {
 
 
         //test dine metoder ved at kalde dem her:
-        System.out.println("\n" + "The longest word is: " + printLongestWord() +"\n");
-        System.out.println(printFirstHalfOfEachWord() +"\n");
-        System.out.println("The most frequent letter is: " + printMostFrequentLetter() +"\n");
-        System.out.println("The least frequent letter is: " +printLessFrequentLetter());
-
-
+        System.out.println("\n" + "The longest word is: " + printLongestWord() + "\n");
+        System.out.println(printFirstHalfOfEachWord() + "\n");
+        mostRepeatedWord();
     }
 
     //skriv dine metoder herunder:
@@ -60,78 +57,47 @@ public class Main {
         return null;
     }
 
-
     //Task 3
-    public static String printMostFrequentLetter() throws IOException {
+    public static void mostRepeatedWord() throws Exception {
+                String line, word = "";
+                int count = 0, maxCount = 0;
+                ArrayList<String> words = new ArrayList<String>();
 
-        String line, word = "";
-        int count = 0, maxCount = 0;
-        ArrayList<String> words = new ArrayList<String>();
+                //Opens file in read mode
+                FileReader file = new FileReader("src/com/company/data.txt");
+                BufferedReader br = new BufferedReader(file);
 
-        FileReader file = new FileReader("src/com/company/data.txt");
-        BufferedReader br = new BufferedReader(file);
-
-        while((line = br.readLine()) != null) {
-            String string[] = line.toLowerCase().split("([,.\\s]+)");
-
-            for(String s : string){
-                words.add(s);
-            }
-        }
-
-        for(int i = 0; i < words.size(); i++){
-            count = 1;
-
-            for(int j = i+1; j < words.size(); j++){
-                if(words.get(i).equals(words.get(j))){
-                    count++;
+                //Reads each line
+                while((line = br.readLine()) != null) {
+                    String string[] = line.toLowerCase().split("([,.\\s]+)");
+                    //Adding all words generated in previous step into words
+                    for(String s : string){
+                        words.add(s);
+                    }
                 }
-            }
 
-            if(count > maxCount){
-                maxCount = count;
-                word = words.get(i);
-            }
-        }
-
-        return word;
-    }
-
-
-    public static String printLessFrequentLetter() throws IOException
-    {
-        String line, word = "";
-        int count = 0, maxCount = 0;
-        ArrayList<String> words = new ArrayList<String>();
-
-        FileReader file = new FileReader("src/com/company/data.txt");
-        BufferedReader br = new BufferedReader(file);
-
-        while((line = br.readLine()) != null) {
-            String string[] = line.toLowerCase().split("([,.\\s]+)");
-
-            for(String s : string){
-                words.add(s);
-            }
-        }
-
-        for(int i = 0; i < words.size(); i++){
-            count = 1;
-
-            for(int j = i+1; j > words.size(); j++){
-                if(words.get(i).equals(words.get(j))){
-                    count++;
+                //Determine the most repeated word in a file
+                for(int i = 0; i < words.size(); i++){
+                    count = 1;
+                    //Count each word in the file and store it in variable count
+                    for(int j = i+1; j < words.size(); j++){
+                        if(words.get(i).equals(words.get(j))){
+                            count++;
+                        }
+                    }
+                    //If maxCount is less than count then store value of count in maxCount
+                    //and corresponding word to variable word
+                    if(count > maxCount){
+                        maxCount = count;
+                        word = words.get(i);
+                    }
                 }
-            }
 
-            if(count > maxCount){
-                maxCount = count;
-                word = words.get(i);
+                System.out.println("The most frequent word is: " + word);
+                br.close();
             }
+    //Task 4
+    //public static void leastRepeatedWord() throws Exception {
+
+
         }
-
-        return word;
-    }
-
-}
-
