@@ -27,6 +27,7 @@ public class Main {
         System.out.println("\n" + "The longest word is: " + printLongestWord() + "\n");
         System.out.println(printFirstHalfOfEachWord() + "\n");
         mostRepeatedWord();
+        leastRepeatedWord();
     }
 
     //skriv dine metoder herunder:
@@ -96,8 +97,12 @@ public class Main {
         System.out.println("The most frequent word is: " + word);
         br.close();
     }
-    //Task 4
-    //public static void leastRepeatedWord() throws Exception {
+
+    /*
+    Jeg har prøvet og prøvet at løse task 3 og task 4 som er mostFrequentLetter
+    og leastFrequentLetter men jeg kunne simpelten ikke finde ud af det.
+    Jeg fik lavet lidt om sådan at task 3 hedder nu mostRepeatedWord, så jeg aflever lidt mere en kun task 1 og task 2. :
+     */
 
 
 }
